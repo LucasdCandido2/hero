@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hero Info</title>
+    <title>Escolha do Herói</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container mt-5">
-        <h1 class="text-center">Informações do Herói</h1>
-        <div id="hero-container" class="row"></div>
-        <div id="hero-info" class="text-danger mt-3"></div> <!-- Adicionei essa div para mostrar erros -->
+        <h1 class="text-center">Selecione um Herói</h1>
+
+        <!-- Select para escolher o herói -->
+        <div class="form-group">
+            <label for="hero-select">Escolha o herói:</label>
+            <select id="hero-select" class="form-control">
+                <option value="Selecione um herói" selected>Selecione um herói</option>
+            </select>
+        </div>
+
+        <div id="hero-container"></div>
+
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
