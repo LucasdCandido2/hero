@@ -1,0 +1,31 @@
+.hero-card {
+    margin-bottom: 20px;
+}
+
+.card {
+    border: 1px solid #007bff; /* Borda azul padrão do Bootstrap */
+    border-radius: 0.5rem; /* Borda arredondada */
+}
+
+.card-img-top {
+    border-top-left-radius: 0.5rem; /* Bordas arredondadas para a imagem */
+    border-top-right-radius: 0.5rem;
+}
+
+.card-title {
+    color: #007bff; /* Título do herói em azul */
+}
+
+.card-text {
+    color: #495057; /* Texto padrão do Bootstrap */
+}
+.skill-icon {
+    width: 40px; /* Ajuste o tamanho conforme necessário */
+    height: auto; 
+    margin-right: 5px;
+}
+
+/* Adicionando um fundo claro para o corpo da página */
+body {
+    background-color: #f8f9fa; /* Fundo claro padrão do Bootstrap */
+}

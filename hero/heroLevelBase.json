@@ -1,0 +1,845 @@
+[
+    {
+        "id": 1,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 100,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 2,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 150,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 3,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 200,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 4,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 300,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 5,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 400,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 6,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 500,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 7,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 600,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 8,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 700,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 9,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 800,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 10,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 900,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 11,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 1000,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 12,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 1100,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 13,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 1200,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 14,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 1300,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 15,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 1400,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 16,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 1500,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 17,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 1600,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 18,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 1700,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 19,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 1800,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 20,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 1900,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 21,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 2000,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 22,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 2100,
+        "pFhy_dmg*base": 1.14
+    },
+    {
+        "id": 23,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 2200,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 24,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 2300,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 25,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 2400,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 26,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 2500,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 27,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 2600,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 28,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 2700,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 29,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 2800,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 30,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 3020,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 31,
+        "defense*base": 1.14,
+        "max_health*base": 1.14,
+        "need_exp": 3240,
+        "phy_dmg*base": 1.14
+    },
+    {
+        "id": 32,
+        "defense*base": 1.15,
+        "max_health*base": 1.15,
+        "need_exp": 3460,
+        "phy_dmg*base": 1.15
+    },
+    {
+        "id": 33,
+        "defense*base": 1.16,
+        "max_health*base": 1.16,
+        "need_exp": 3680,
+        "phy_dmg*base": 1.16
+    },
+    {
+        "id": 34,
+        "defense*base": 1.18,
+        "max_health*base": 1.18,
+        "need_exp": 3900,
+        "phy_dmg*base": 1.18
+    },
+    {
+        "id": 35,
+        "defense*base": 1.2,
+        "max_health*base": 1.2,
+        "need_exp": 4120,
+        "phy_dmg*base": 1.2
+    },
+    {
+        "id": 36,
+        "defense*base": 1.22,
+        "max_health*base": 1.22,
+        "need_exp": 4340,
+        "phy_dmg*base": 1.22
+    },
+    {
+        "id": 37,
+        "defense*base": 1.24,
+        "max_health*base": 1.24,
+        "need_exp": 4560,
+        "phy_dmg*base": 1.24
+    },
+    {
+        "id": 38,
+        "defense*base": 1.25,
+        "max_health*base": 1.25,
+        "need_exp": 4780,
+        "phy_dmg*base": 1.25
+    },
+    {
+        "id": 39,
+        "defense*base": 1.27,
+        "max_health*base": 1.27,
+        "need_exp": 5000,
+        "phy_dmg*base": 1.27
+    },
+    {
+        "id": 40,
+        "defense*base": 1.29,
+        "max_health*base": 1.29,
+        "need_exp": 5220,
+        "phy_dmg*base": 1.29
+    },
+    {
+        "id": 41,
+        "defense*base": 1.31,
+        "max_health*base": 1.31,
+        "need_exp": 5440,
+        "phy_dmg*base": 1.31
+    },
+    {
+        "id": 42,
+        "defense*base": 1.33,
+        "max_health*base": 1.33,
+        "need_exp": 5660,
+        "phy_dmg*base": 1.33
+    },
+    {
+        "id": 43,
+        "defense*base": 1.35,
+        "max_health*base": 1.35,
+        "need_exp": 5880,
+        "phy_dmg*base": 1.35
+    },
+    {
+        "id": 44,
+        "defense*base": 1.37,
+        "max_health*base": 1.37,
+        "need_exp": 6100,
+        "phy_dmg*base": 1.37
+    },
+    {
+        "id": 45,
+        "defense*base": 1.39,
+        "max_health*base": 1.39,
+        "need_exp": 6320,
+        "phy_dmg*base": 1.39
+    },
+    {
+        "id": 46,
+        "defense*base": 1.41,
+        "max_health*base": 1.41,
+        "need_exp": 6540,
+        "phy_dmg*base": 1.41
+    },
+    {
+        "id": 47,
+        "defense*base": 1.43,
+        "max_health*base": 1.43,
+        "need_exp": 6760,
+        "phy_dmg*base": 1.43
+    },
+    {
+        "id": 48,
+        "defense*base": 1.46,
+        "max_health*base": 1.46,
+        "need_exp": 6980,
+        "phy_dmg*base": 1.46
+    },
+    {
+        "id": 49,
+        "defense*base": 1.48,
+        "max_health*base": 1.48,
+        "need_exp": 7200,
+        "phy_dmg*base": 1.48
+    },
+    {
+        "id": 50,
+        "defense*base": 1.72,
+        "max_health*base": 1.72,
+        "need_exp": 7680,
+        "phy_dmg*base": 1.72
+    },
+    {
+        "id": 51,
+        "defense*base": 1.72,
+        "max_health*base": 1.72,
+        "need_exp": 8160,
+        "phy_dmg*base": 1.72
+    },
+    {
+        "id": 52,
+        "defense*base": 1.75,
+        "max_health*base": 1.75,
+        "need_exp": 8640,
+        "phy_dmg*base": 1.75
+    },
+    {
+        "id": 53,
+        "defense*base": 1.77,
+        "max_health*base": 1.77,
+        "need_exp": 9120,
+        "phy_dmg*base": 1.77
+    },
+    {
+        "id": 54,
+        "defense*base": 1.8,
+        "max_health*base": 1.8,
+        "need_exp": 9600,
+        "phy_dmg*base": 1.8
+    },
+    {
+        "id": 55,
+        "defense*base": 1.83,
+        "max_health*base": 1.83,
+        "need_exp": 10080,
+        "phy_dmg*base": 1.83
+    },
+    {
+        "id": 56,
+        "defense*base": 1.85,
+        "max_health*base": 1.85,
+        "need_exp": 10560,
+        "phy_dmg*base": 1.85
+    },
+    {
+        "id": 57,
+        "defense*base": 1.88,
+        "max_health*base": 1.88,
+        "need_exp": 11040,
+        "phy_dmg*base": 1.88
+    },
+    {
+        "id": 58,
+        "defense*base": 1.91,
+        "max_health*base": 1.91,
+        "need_exp": 11520,
+        "phy_dmg*base": 1.91
+    },
+    {
+        "id": 59,
+        "defense*base": 1.94,
+        "max_health*base": 1.94,
+        "need_exp": 12000,
+        "phy_dmg*base": 1.94
+    },
+    {
+        "id": 60,
+        "defense*base": 1.97,
+        "max_health*base": 1.97,
+        "need_exp": 12480,
+        "phy_dmg*base": 1.97
+    },
+    {
+        "id": 61,
+        "defense*base": 2.0,
+        "max_health*base": 2.0,
+        "need_exp": 12960,
+        "phy_dmg*base": 2.0
+    },
+    {
+        "id": 62,
+        "defense*base": 2.03,
+        "max_health*base": 2.03,
+        "need_exp": 13440,
+        "phy_dmg*base": 2.03
+    },
+    {
+        "id": 63,
+        "defense*base": 2.06,
+        "max_health*base": 2.06,
+        "need_exp": 13920,
+        "phy_dmg*base": 2.06
+    },
+    {
+        "id": 64,
+        "defense*base": 2.09,
+        "max_health*base": 2.09,
+        "need_exp": 14400,
+        "phy_dmg*base": 2.09
+    },
+    {
+        "id": 65,
+        "defense*base": 2.12,
+        "max_health*base": 2.12,
+        "need_exp": 14880,
+        "phy_dmg*base": 2.12
+    },
+    {
+        "id": 66,
+        "defense*base": 2.15,
+        "max_health*base": 2.15,
+        "need_exp": 15360,
+        "phy_dmg*base": 2.15
+    },
+    {
+        "id": 67,
+        "defense*base": 2.18,
+        "max_health*base": 2.18,
+        "need_exp": 15840,
+        "phy_dmg*base": 2.18
+    },
+    {
+        "id": 68,
+        "defense*base": 2.22,
+        "max_health*base": 2.22,
+        "need_exp": 16320,
+        "phy_dmg*base": 2.22
+    },
+    {
+        "id": 69,
+        "defense*base": 2.25,
+        "max_health*base": 2.25,
+        "need_exp": 16800,
+        "phy_dmg*base": 2.25
+    },
+    {
+        "id": 70,
+        "defense*base": 2.62,
+        "max_health*base": 2.62,
+        "need_exp": 27150,
+        "phy_dmg*base": 2.62
+    },
+    {
+        "id": 71,
+        "defense*base": 2.62,
+        "max_health*base": 2.62,
+        "need_exp": 29100,
+        "phy_dmg*base": 2.62
+    },
+    {
+        "id": 72,
+        "defense*base": 2.66,
+        "max_health*base": 2.66,
+        "need_exp": 31050,
+        "phy_dmg*base": 2.66
+    },
+    {
+        "id": 73,
+        "defense*base": 2.7,
+        "max_health*base": 2.7,
+        "need_exp": 33000,
+        "phy_dmg*base": 2.7
+    },
+    {
+        "id": 74,
+        "defense*base": 2.74,
+        "max_health*base": 2.74,
+        "need_exp": 34950,
+        "phy_dmg*base": 2.74
+    },
+    {
+        "id": 75,
+        "defense*base": 2.78,
+        "max_health*base": 2.78,
+        "need_exp": 36900,
+        "phy_dmg*base": 2.78
+    },
+    {
+        "id": 76,
+        "defense*base": 2.82,
+        "max_health*base": 2.82,
+        "need_exp": 38850,
+        "phy_dmg*base": 2.82
+    },
+    {
+        "id": 77,
+        "defense*base": 2.86,
+        "max_health*base": 2.86,
+        "need_exp": 40800,
+        "phy_dmg*base": 2.86
+    },
+    {
+        "id": 78,
+        "defense*base": 2.91,
+        "max_health*base": 2.91,
+        "need_exp": 42750,
+        "phy_dmg*base": 2.91
+    },
+    {
+        "id": 79,
+        "defense*base": 2.95,
+        "max_health*base": 2.95,
+        "need_exp": 44700,
+        "phy_dmg*base": 2.95
+    },
+    {
+        "id": 80,
+        "defense*base": 2.99,
+        "max_health*base": 2.99,
+        "need_exp": 46650,
+        "phy_dmg*base": 2.99
+    },
+    {
+        "id": 81,
+        "defense*base": 3.04,
+        "max_health*base": 3.04,
+        "need_exp": 48600,
+        "phy_dmg*base": 3.04
+    },
+    {
+        "id": 82,
+        "defense*base": 3.08,
+        "max_health*base": 3.08,
+        "need_exp": 50550,
+        "phy_dmg*base": 3.08
+    },
+    {
+        "id": 83,
+        "defense*base": 3.13,
+        "max_health*base": 3.13,
+        "need_exp": 52500,
+        "phy_dmg*base": 3.13
+    },
+    {
+        "id": 84,
+        "defense*base": 3.18,
+        "max_health*base": 3.18,
+        "need_exp": 54450,
+        "phy_dmg*base": 3.18
+    },
+    {
+        "id": 85,
+        "defense*base": 3.22,
+        "max_health*base": 3.22,
+        "need_exp": 56400,
+        "phy_dmg*base": 3.22
+    },
+    {
+        "id": 86,
+        "defense*base": 3.27,
+        "max_health*base": 3.27,
+        "need_exp": 58350,
+        "phy_dmg*base": 3.27
+    },
+    {
+        "id": 87,
+        "defense*base": 3.32,
+        "max_health*base": 3.32,
+        "need_exp": 60300,
+        "phy_dmg*base": 3.32
+    },
+    {
+        "id": 88,
+        "defense*base": 3.37,
+        "max_health*base": 3.37,
+        "need_exp": 62250,
+        "phy_dmg*base": 3.37
+    },
+    {
+        "id": 89,
+        "defense*base": 3.42,
+        "max_health*base": 3.42,
+        "need_exp": 64200,
+        "phy_dmg*base": 3.42
+    },
+    {
+        "id": 90,
+        "defense*base": 5.58,
+        "max_health*base": 5.58,
+        "need_exp": 79200,
+        "phy_dmg*base": 5.58
+    },
+    {
+        "id": 91,
+        "defense*base": 5.58,
+        "max_health*base": 5.58,
+        "need_exp": 100200,
+        "phy_dmg*base": 5.58
+    },
+    {
+        "id": 92,
+        "defense*base": 5.97,
+        "max_health*base": 5.97,
+        "need_exp": 127200,
+        "phy_dmg*base": 5.97
+    },
+    {
+        "id": 93,
+        "defense*base": 6.37,
+        "max_health*base": 6.37,
+        "need_exp": 160200,
+        "phy_dmg*base": 6.37
+    },
+    {
+        "id": 94,
+        "defense*base": 6.8,
+        "max_health*base": 6.8,
+        "need_exp": 199200,
+        "phy_dmg*base": 6.8
+    },
+    {
+        "id": 95,
+        "defense*base": 7.26,
+        "max_health*base": 7.26,
+        "need_exp": 244200,
+        "phy_dmg*base": 7.26
+    },
+    {
+        "id": 96,
+        "defense*base": 7.74,
+        "max_health*base": 7.74,
+        "need_exp": 295200,
+        "phy_dmg*base": 7.74
+    },
+    {
+        "id": 97,
+        "defense*base": 8.24,
+        "max_health*base": 8.24,
+        "need_exp": 352200,
+        "phy_dmg*base": 8.24
+    },
+    {
+        "id": 98,
+        "defense*base": 8.78,
+        "max_health*base": 8.78,
+        "need_exp": 415200,
+        "phy_dmg*base": 8.78
+    },
+    {
+        "id": 99,
+        "defense*base": 9.67,
+        "max_health*base": 9.67,
+        "need_exp": 484200,
+        "phy_dmg*base": 9.67
+    },
+    {
+        "id": 100,
+        "defense*base": 0.0,
+        "max_health*base": 0.0,
+        "need_exp": 0,
+        "phy_dmg*base": 0.0
+    },
+    {
+        "id": 1,
+        "accuracy*base": 0.0,
+        "atk_speed*bpct": 0.0,
+        "cd_haste*base": 0.0,
+        "consume_lv": [
+            1
+        ],
+        "consume_num": [
+            10
+        ],
+        "crit_bonus*bpct": 0.0,
+        "crit_chance*bpct": 0.0,
+        "defense*base": 8.51,
+        "item_id": [
+            {
+                "id": 1000,
+                "item_tips": "A common currency on Adenthia. It can be used to trade for various items.",
+                "show_name": "Gold"
+            }
+        ],
+        "item_num": [
+            1000
+        ],
+        "mastery*base": 0.0,
+        "max_health*base": 8.51,
+        "max_lv": 30,
+        "phy_dmg*base": 8.51,
+        "resistance*base": 0.0
+    },
+    {
+        "id": 2,
+        "accuracy*base": 0.0,
+        "atk_speed*bpct": 0.0,
+        "cd_haste*base": 0.0,
+        "consume_lv": [
+            1,
+            2
+        ],
+        "consume_num": [
+            30,
+            12
+        ],
+        "crit_bonus*bpct": 0.0,
+        "crit_chance*bpct": 0.0,
+        "defense*base": 12.97,
+        "item_id": [
+            {
+                "id": 1000,
+                "item_tips": "A common currency on Adenthia. It can be used to trade for various items.",
+                "show_name": "Gold"
+            }
+        ],
+        "item_num": [
+            2000
+        ],
+        "mastery*base": 0.0,
+        "max_health*base": 12.97,
+        "max_lv": 50,
+        "phy_dmg*base": 12.97,
+        "resistance*base": 0.0,
+        "unlock_slot": "artifacts"
+    },
+    {
+        "id": 3,
+        "accuracy*base": 1.0,
+        "atk_speed*bpct": 1.0,
+        "cd_haste*base": 1.0,
+        "consume_lv": [
+            2,
+            3
+        ],
+        "consume_num": [
+            40,
+            15
+        ],
+        "crit_bonus*bpct": 1.0,
+        "crit_chance*bpct": 1.0,
+        "defense*base": 19.74,
+        "item_id": [
+            {
+                "id": 1000,
+                "item_tips": "A common currency on Adenthia. It can be used to trade for various items.",
+                "show_name": "Gold"
+            }
+        ],
+        "item_num": [
+            5000
+        ],
+        "mastery*base": 1.0,
+        "max_health*base": 19.74,
+        "max_lv": 70,
+        "phy_dmg*base": 19.74,
+        "req_adv_lv": 21,
+        "resistance*base": 1.0,
+        "unlock_slot": "rings"
+    },
+    {
+        "id": 4,
+        "accuracy*base": 1.0,
+        "atk_speed*bpct": 1.0,
+        "cd_haste*base": 1.0,
+        "consume_lv": [
+            3
+        ],
+        "consume_num": [
+            50
+        ],
+        "crit_bonus*bpct": 1.0,
+        "crit_chance*bpct": 1.0,
+        "defense*base": 28.45,
+        "item_id": [
+            {
+                "id": 1000,
+                "item_tips": "A common currency on Adenthia. It can be used to trade for various items.",
+                "show_name": "Gold"
+            }
+        ],
+        "item_num": [
+            10000
+        ],
+        "mastery*base": 1.0,
+        "max_health*base": 28.45,
+        "max_lv": 90,
+        "phy_dmg*base": 28.45,
+        "req_adv_lv": 28,
+        "resistance*base": 1.0,
+        "unlock_slot": "necklaces"
+    },
+    {
+        "id": 5,
+        "accuracy*base": 0.0,
+        "atk_speed*bpct": 0.0,
+        "cd_haste*base": 0.0,
+        "crit_bonus*bpct": 0.0,
+        "crit_chance*bpct": 0.0,
+        "defense*base": 0.0,
+        "mastery*base": 0.0,
+        "max_health*base": 0.0,
+        "max_lv": 100,
+        "phy_dmg*base": 0.0,
+        "resistance*base": 0.0
+    }
+]
