@@ -109,7 +109,7 @@ function displayHero(hero) {
     const resistance = hero['resistance*base'];
     const mastery = hero['mastery_base*base'];
 
-    const captainIconBase = captain_slot_path.split('/').slice(-1)[0]; // Obtém o nome do arquivo, ex: icon_duizhangji_2.png
+    const captainIconBase = captain_slot_path ? captain_slot_path.split('/').slice(-1)[0] : null; // Obtém o nome do arquivo, ex: icon_duizhangji_2.png
     const heroImagePath = `${hero.heroIdPath.split('/').pop()}`;
     
     heroContainer.html(`
@@ -131,7 +131,7 @@ function displayHero(hero) {
                 <p><strong>Resistência Base:</strong> ${resistance}</p>
                 <p><strong>Maestria Base:</strong> ${mastery}</p>
                 <p><strong>Slot do Capitão:</strong> ${captain_slot}</p>
-                <img src="${captainIconBase}" alt="Ícone do Slot do Capitão" class="skill-icon" />
+                ${captainIconBase ? `<img src="${captainIconBase}" alt="Ícone do Slot do Capitão" class="skill-icon" />` : ''}
 
                 <div class="form-group">
                     <label for="hero-level">Escolha o nível:</label>
