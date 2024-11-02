@@ -9,9 +9,13 @@ async function fetchHero() {
         if (!levelResponse.ok) throw new Error("Erro ao buscar os dados de level base.");
 
         const heroData = await heroResponse.json();
-        const levelData = await levelResponse.json(); // Assume que levelData será um objeto ou array que contém os dados necessários
-        populateHeroSelect(heroData)
-        return { heroData, levelData }; // Retorne os dados de nível para uso posterior
+        const levelData = await levelResponse.json();
+        populateHeroSelect(heroData);
+        
+        // Armazena os dados globalmente para fácil acesso
+        window.heroData = heroData;
+        window.levelData = levelData;
+        
     } catch (error) {
         console.error(error);
     }
@@ -31,7 +35,7 @@ function populateHeroSelect(heroData) {
 }
 
 // Função para buscar e exibir os dados do herói selecionado
-async function fetchAndDisplayHero(heroId, heroData) {
+async function fetchAndDisplayHero(heroId) {
     try {
         const heroIdNum = parseInt(heroId, 10);
         
@@ -40,7 +44,7 @@ async function fetchAndDisplayHero(heroId, heroData) {
         if (selectedHero) {
             displayHero(selectedHero);
             const level = parseInt($("#hero-level").val(), 10);
-            displayCalculatedAttributes(selectedHero, level, window.levelData); // Atualiza os atributos
+            displayCalculatedAttributes(selectedHero, level); // Atualiza os atributos
         } else {
             console.log("Herói não encontrado:", heroIdNum);
         }
@@ -49,50 +53,74 @@ async function fetchAndDisplayHero(heroId, heroData) {
     }
 }
 
-
-
-
 // Função para calcular os atributos do herói com base no nível
-function calculateHeroAttributes(hero, level, levelData) {
+function calculateHeroAttributes(hero, level) {
     const baseAttributes = {
-        accuracy: hero['accuracy*base'] || 0,
-        defense: hero['defense*base'] || 0,
-        max_health: hero['max_health*base'] || 0,
-        phy_dmg: hero['phy_dmg*base'] || 0,
-        resistance: hero['resistance*base'] || 0
+        accuracy: hero['accuracy*base'],
+        atk_speed: hero['atk_speed*bpct'],
+        crit_bonus: hero['crit_bonus*bpct'],
+        crit_chance: hero['crit_chance*bpct'],
+        defense: hero['defense*base'],
+        max_health: hero['max_health*base'],
+        phy_dmg: hero['phy_dmg*base'],
+        resistance: hero['resistance*base'],
     };
 
-    // Aplica as alterações de acordo com levelData
-    Object.keys(levelData).forEach(levelThreshold => {
-        if (level >= levelThreshold) {
-            baseAttributes.defense += levelData[levelThreshold].defense || 0;
-            baseAttributes.max_health += levelData[levelThreshold].max_health || 0;
-            baseAttributes.phy_dmg += levelData[levelThreshold].phy_dmg || 0;
-        }
-    });
+    const levelUpData = {
+        30: { defense: 8.51, max_health: 8.51, phy_dmg: 8.51 },
+        50: { defense: 12.97, max_health: 12.97, phy_dmg: 12.97 },
+        70: { defense: 19.74, max_health: 19.74, phy_dmg: 19.74 },
+        90: { defense: 28.45, max_health: 28.45, phy_dmg: 28.45 },
+        100: { defense: 0.0, max_health: 0.0, phy_dmg: 0.0 },
+    };
+
+    // Aplicar aumentos de atributos conforme o nível
+    if (level >= 30) {
+        baseAttributes.defense += levelUpData[30].defense;
+        baseAttributes.max_health += levelUpData[30].max_health;
+        baseAttributes.phy_dmg += levelUpData[30].phy_dmg;
+    }
+    if (level >= 50) {
+        baseAttributes.defense += levelUpData[50].defense;
+        baseAttributes.max_health += levelUpData[50].max_health;
+        baseAttributes.phy_dmg += levelUpData[50].phy_dmg;
+    }
+    if (level >= 70) {
+        baseAttributes.defense += levelUpData[70].defense;
+        baseAttributes.max_health += levelUpData[70].max_health;
+        baseAttributes.phy_dmg += levelUpData[70].phy_dmg;
+    }
+    if (level >= 90) {
+        baseAttributes.defense += levelUpData[90].defense;
+        baseAttributes.max_health += levelUpData[90].max_health;
+        baseAttributes.phy_dmg += levelUpData[90].phy_dmg;
+    }
 
     return baseAttributes;
 }
 
-// Função para exibir os atributos calculados
-function displayCalculatedAttributes(hero, level, levelData) {
-    const attributes = calculateHeroAttributes(hero, level, levelData); // Passa os dados de level
+// Função para exibir atributos calculados
+function displayCalculatedAttributes(hero, level) {
+    const attributes = calculateHeroAttributes(hero, level);
 
-    $('#health-total').text(attributes.max_health.toFixed(2));
-    $('#defense-total').text(attributes.defense.toFixed(2));
-    $('#attack-total').text(attributes.phy_dmg.toFixed(2));
-    $('#accuracy-total').text(attributes.accuracy.toFixed(2));
-    $('#crit-chance-total').text((hero['crit_chance*bpct'] * 100).toFixed(2) + '%');
-    $('#crit-damage-total').text((hero['crit_bonus*bpct'] * 100).toFixed(2) + '%');
-    $('#resistance-total').text(attributes.resistance.toFixed(2));
-    $('#haste-total').text('0'); // Placeholder
+    const attributesContainer = $('#hero-atributo');
+    attributesContainer.html(`
+        <h6>Atributos Calculados (Nível ${level}):</h6>
+        <p><strong>Precisão:</strong> ${attributes.accuracy.toFixed(2)}</p>
+        <p><strong>Velocidade de Ataque:</strong> ${attributes.atk_speed.toFixed(2)}</p>
+        <p><strong>Bônus Crítico:</strong> ${attributes.crit_bonus.toFixed(2)}</p>
+        <p><strong>Chance Crítica:</strong> ${attributes.crit_chance.toFixed(2)}</p>
+        <p><strong>Defesa:</strong> ${attributes.defense.toFixed(2)}</p>
+        <p><strong>Saúde Máxima:</strong> ${attributes.max_health.toFixed(2)}</p>
+        <p><strong>Dano Físico:</strong> ${attributes.phy_dmg.toFixed(2)}</p>
+        <p><strong>Resistência:</strong> ${attributes.resistance.toFixed(2)}</p>
+    `);
 }
 
 // Função para exibir os dados do herói
 function displayHero(hero) {
-    console.log(hero);
-    
     const heroContainer = $('#hero-container');
+    const heroImagePath = `${hero.heroIdPath.split('/').pop()}`;
     const {
         heroname, ability_replace, show_title, rarity, element, orientation, skill, atk_type,
         attack_frequency, captain_slot, captain_slot_path} = hero;
@@ -108,7 +136,6 @@ function displayHero(hero) {
     const mastery = hero['mastery*base'];
 
     const captainIconBase = captain_slot_path ? captain_slot_path.split('/').slice(-1)[0] : null; // Obtém o nome do arquivo, ex: icon_duizhangji_2.png
-    const heroImagePath = `${hero.heroIdPath.split('/').pop()}`;
     
     heroContainer.html(`
         <div class="card mb-4">
@@ -137,7 +164,7 @@ function displayHero(hero) {
                 </div>
 
                 <h6>Informações Base:</h6>
-                <ul>
+                <ul id="hero-atributo">
                     <li><strong>Precisão:</strong> ${accuracy}</li>
                     <li><strong>Velocidade de Ataque:</strong> ${atk_speed}</li>
                     <li><strong>Defesa:</strong> ${defense}</li>
@@ -163,37 +190,30 @@ function displayHero(hero) {
             </div>
         </div>
     `);
+
     // Evento para alterar o nível com o controle deslizante
     $('#hero-level').on('input', function() {
         const level = parseInt($(this).val(), 10);
         $('#level-display').text(`Nível: ${level}`);
-        const selectedHeroId = $('#hero-select').val();
-        if (selectedHeroId) {
-            displayCalculatedAttributes(hero, level, window.levelData); // Recarrega o herói e exibe atributos atualizados
-        }
+        displayCalculatedAttributes(hero, level);
     });
-    
 
     // Inicializa a exibição de atributos com o nível 1
-    displayCalculatedAttributes(hero, 1, window.levelData);
+    displayCalculatedAttributes(hero, 1);
 }
-
 
 // Inicializa o aplicativo ao carregar
 async function initializeApp() {
-    const { heroData, levelData } = await fetchHero(); // Chamando a função de fetch
-    window.levelData = levelData; // Armazena os dados de nível globalmente
-    window.heroData = heroData; // Armazena os dados de heróis globalmente
+    await fetchHero();
 }
 
 // Evento para quando um herói é selecionado
 $('#hero-select').on('change', function() {
     const selectedHeroId = $(this).val();
     if (selectedHeroId) {
-        fetchAndDisplayHero(selectedHeroId); // Atualiza a exibição ao trocar de herói
+        fetchAndDisplayHero(selectedHeroId);
     }
 });
-
 
 // Chamando a inicialização do aplicativo
 $(document).ready(function() {
