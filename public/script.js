@@ -10,15 +10,15 @@ async function fetchHero() {
 
         const heroData = await heroResponse.json();
         const levelData = await levelResponse.json(); // Assume que levelData será um objeto ou array que contém os dados necessários
-        populateHeroSelect(heroData);
-        return levelData; // Retorne os dados de nível para uso posterior
+        populateHeroSelect(heroData)
+        return { heroData, levelData }; // Retorne os dados de nível para uso posterior
     } catch (error) {
         console.error(error);
     }
 }
 
 // Função para preencher o select com os heróis
-function populateHeroSelect(heroData) {
+function populateHeroSelect(heroData) {    
     const heroSelect = $('#hero-select');
     heroSelect.empty(); // Limpa as opções anteriores
     heroSelect.append('<option value="" disabled selected>Selecione um herói</option>'); // Adiciona a opção padrão
@@ -31,14 +31,12 @@ function populateHeroSelect(heroData) {
 }
 
 // Função para buscar e exibir os dados do herói selecionado
-async function fetchAndDisplayHero(heroId) {
+async function fetchAndDisplayHero(heroId, heroData) {
     try {
         const heroIdNum = parseInt(heroId, 10);
-        const response = await fetch('/api/hero');
-        if (!response.ok) throw new Error('Erro ao buscar os dados do herói.');
-        const heroData = await response.json();
-
-        const selectedHero = heroData.find(hero => hero.heroId === heroIdNum);
+        
+        // Procura o herói específico usando o heroData já carregado
+        const selectedHero = window.heroData.find(hero => hero.heroId === heroIdNum);
         if (selectedHero) {
             displayHero(selectedHero);
             const level = parseInt($("#hero-level").val(), 10);
@@ -50,6 +48,7 @@ async function fetchAndDisplayHero(heroId) {
         console.error(error);
     }
 }
+
 
 
 
@@ -91,13 +90,12 @@ function displayCalculatedAttributes(hero, level, levelData) {
 
 // Função para exibir os dados do herói
 function displayHero(hero) {
+    console.log(hero);
+    
     const heroContainer = $('#hero-container');
     const {
-        heroname, ability_replace, accuracy_base, atk_speed_bpct,
-        defense_base, max_health_base, phy_dmg_base, resistance_base,
-        show_title, rarity, element, orientation, skill, atk_type,
-        attack_frequency, captain_slot, captain_slot_path, mastery_base
-    } = hero;
+        heroname, ability_replace, show_title, rarity, element, orientation, skill, atk_type,
+        attack_frequency, captain_slot, captain_slot_path} = hero;
 
     const accuracy = hero['accuracy*base'];
     const atk_speed = hero['atk_speed*bpct'];
@@ -165,41 +163,37 @@ function displayHero(hero) {
             </div>
         </div>
     `);
+    // Evento para alterar o nível com o controle deslizante
+    $('#hero-level').on('input', function() {
+        const level = parseInt($(this).val(), 10);
+        $('#level-display').text(`Nível: ${level}`);
+        const selectedHeroId = $('#hero-select').val();
+        if (selectedHeroId) {
+            displayCalculatedAttributes(hero, level, window.levelData); // Recarrega o herói e exibe atributos atualizados
+        }
+    });
+    
+
+    // Inicializa a exibição de atributos com o nível 1
+    displayCalculatedAttributes(hero, 1, window.levelData);
 }
 
-// // Evento para alterar o nível com o controle deslizante
-// $('#hero-level').on('input', function() {
-//     const level = parseInt($(this).val(), 10);
-//     $('#level-display').text(`Nível: ${level}`);
-//     const selectedHeroId = $('#hero-select').val();
-//     if (selectedHeroId) {
-//         fetchAndDisplayHero(selectedHeroId); // Recarrega o herói selecionado
-//     }
-// });
 
-// Evento para alterar o nível com o controle deslizante
-$('#hero-level').on('input', function() {
-    const level = parseInt($(this).val(), 10);
-    $('#level-display').text(`Nível: ${level}`);
-    const selectedHeroId = $('#hero-select').val();
-    if (selectedHeroId) {
-        fetchAndDisplayHero(selectedHeroId); // Recarrega o herói e exibe atributos atualizados
-    }
-});
+// Inicializa o aplicativo ao carregar
+async function initializeApp() {
+    const { heroData, levelData } = await fetchHero(); // Chamando a função de fetch
+    window.levelData = levelData; // Armazena os dados de nível globalmente
+    window.heroData = heroData; // Armazena os dados de heróis globalmente
+}
 
 // Evento para quando um herói é selecionado
 $('#hero-select').on('change', function() {
     const selectedHeroId = $(this).val();
     if (selectedHeroId) {
-        fetchAndDisplayHero(selectedHeroId);
+        fetchAndDisplayHero(selectedHeroId); // Atualiza a exibição ao trocar de herói
     }
 });
 
-// Inicializa o aplicativo ao carregar
-async function initializeApp() {
-    const levelData = await fetchHero(); // Chamando a função de fetch
-    window.levelData = levelData; // Armazena os dados de nível globalmente
-}
 
 // Chamando a inicialização do aplicativo
 $(document).ready(function() {
