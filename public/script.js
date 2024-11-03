@@ -76,10 +76,10 @@ function calculateHeroAttributes(hero, level) {
         resistance: hero["resistance*base"],
     };
 
-    console.log(
-        "hero.levels",
-        hero.levels.find((heroLevel) => heroLevel.level === level),
-    );
+    // console.log(
+    //     "hero.levels",
+    //     hero.levels.find((heroLevel) => heroLevel.level === level),
+    // );
 
     baseAttributes.accuracy = hero.levels.find((heroLevel) => heroLevel.level === level).accuracy;
     baseAttributes.atk_speed = hero.levels.find((heroLevel) => heroLevel.level === level).atk_speed;
@@ -159,6 +159,8 @@ function displayHero(hero) {
         attack_frequency,
         captain_slot,
         captain_slot_path,
+        captain_slot_path_2,
+        captain_slot_path_3,
     } = hero;
 
     const accuracy = hero["accuracy*base"];
@@ -171,13 +173,16 @@ function displayHero(hero) {
     const resistance = hero["resistance*base"];
     const mastery = hero["mastery*base"];
 
-    const captainIconBase = captain_slot_path ? captain_slot_path.split("/").slice(-1)[0] : null; // Obtém o nome do arquivo, ex: icon_duizhangji_2.png
+    const captainIconBase = captain_slot_path ? captain_slot_path.split("/").slice(-1)[0] : null;
+    
+    // Obtém o nome do arquivo, ex: icon_duizhangji_2.png
 
     heroContainer.html(`
         <div class="card mb-4">
             <img src="${heroImagePath}" id="img-head" class="card-img-top" alt="${heroName}">
             <div class="card-body">
                 <h5 class="card-title">${heroName || "Hero"}</h5>
+                <p><strong>Nome:</strong> ${hero.heroname}</p>
                 <p><strong>Título:</strong> ${show_title}</p>
                 <p><strong>Raridade:</strong> ${rarity}</p>
                 <p><strong>Elemento:</strong> ${element}</p>
@@ -207,20 +212,15 @@ function displayHero(hero) {
                 <h6>Habilidades:</h6>
                 <ul>
                     ${Object.values(skill)
-                        .map(
-                            (s) => `
-                        <li>
-                            <strong>${s.skillname}</strong>: ${s.skilldesc}
-                            ${[1, 2, 3]
-                                .map(
-                                    (i) => `
-                                <img src="icon_skill_${hero.heroId}_${i}.png" alt="${s.skillname} - nível ${i}" class="skill-icon" />
-                            `,
-                                )
-                                .join("")}
-                        </li>
-                    `,
-                        )
+                        .map((s) => {
+                            const skillPath = s.skillPath ? s.skillPath.split("/").pop() : null;
+                            return `
+                                <li>
+                                    <strong>${s.skillname}</strong>: ${s.skilldesc}
+                                    ${skillPath ? `<img src="${skillPath}" alt="${s.skillname}" class="skill-icon" />` : ""}
+                                </li>
+                            `;
+                        })
                         .join("")}
                 </ul>
             </div>
