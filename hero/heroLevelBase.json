@@ -151,7 +151,7 @@
         "defense*base": 1.14,
         "max_health*base": 1.14,
         "need_exp": 2100,
-        "pFhy_dmg*base": 1.14
+        "phy_dmg*base": 1.14
     },
     {
         "id": 23,

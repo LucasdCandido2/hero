@@ -5,6 +5,51 @@ const path = require("node:path");
 
 configDotenv();
 
+function calcTotalExp(level, heroLevelBaseData) {
+    let totalExp = 0;
+    for (let i = 1; i <= level; i++) {
+        totalExp += heroLevelBaseData.find((level) => level.id === i).need_exp;
+    }
+    return totalExp;
+}
+
+function calcAttribute(level, attribute, heroLevelBaseData, heroData) {
+    let attributeValue = heroData[attribute];
+
+    if (level === 1) {
+        return attributeValue;
+    }
+
+    for (let i = 1; i <= level; i++) {
+        plusAttribute =
+            heroLevelBaseData.find((levelData) => levelData.id === i)[attribute] * heroData.lv_up_base[attribute];
+        attributeValue += plusAttribute;
+    }
+
+    return attributeValue ?? heroData[attribute];
+}
+
+async function levelsData(level, heroLevelBaseData, heroData) {
+    const levels = [];
+    for (let i = 1; i <= level; i++) {
+        levels.push({
+            level: i,
+            accuracy: Math.round(calcAttribute(i, "accuracy*base", heroLevelBaseData, heroData)),
+            atk_speed: Math.round(calcAttribute(i, "atk_speed*base", heroLevelBaseData, heroData)),
+            crit_bonus: Math.round(calcAttribute(i, "crit_bonus*base", heroLevelBaseData, heroData)),
+            crit_chance: Math.round(calcAttribute(i, "crit_chance*base", heroLevelBaseData, heroData)),
+            resistance: Math.round(calcAttribute(i, "resistance*base", heroLevelBaseData, heroData)),
+            defense: Math.round(calcAttribute(i, "defense*base", heroLevelBaseData, heroData)),
+            max_health: Math.round(calcAttribute(i, "max_health*base", heroLevelBaseData, heroData)),
+            physical_damage: Math.round(calcAttribute(i, "phy_dmg*base", heroLevelBaseData, heroData)),
+            need_exp: heroLevelBaseData.find((levelData) => levelData.id === i).need_exp,
+            total_exp: calcTotalExp(i, heroLevelBaseData),
+        });
+    }
+
+    return levels;
+}
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -40,24 +85,22 @@ app.get("/api/heroes", async (req, res) => {
 
 // Rota para obter os dados do hero
 app.get("/api/hero/:heroId", async (req, res) => {
-  const { heroId } = req.params;
-  const heroesJSONData = JSON.parse(await fs.readFile(path.join(__dirname, "hero", "hero.json"), "utf8"));
-  const heroesLevelBaseJSONData = JSON.parse(
-    await fs.readFile(path.join(__dirname, "hero", "heroLevelBase.json"), "utf8"),
-  );
-
-  console.log("🚀 ~ app.get ~ heroesLevelBaseJSONData:", heroesLevelBaseJSONData)
+    const { heroId } = req.params;
+    const heroesJSONData = JSON.parse(await fs.readFile(path.join(__dirname, "hero", "hero.json"), "utf8"));
+    const heroesLevelBaseJSONData = JSON.parse(
+        await fs.readFile(path.join(__dirname, "hero", "heroLevelBase.json"), "utf8"),
+    );
 
     const heroData = heroesJSONData.find((hero) => hero.heroId === parseInt(heroId, 10));
 
-    const heroLevelBaseData = heroesLevelBaseJSONData.find((hero) => hero.heroId === parseInt(heroId, 10));
+    const heroLevelBaseData = heroesLevelBaseJSONData;
 
     // console.log("heroData", heroData);
     // console.log("heroLevelBaseData", heroLevelBaseData);
 
     const hero = {
         ...heroData,
-        ...heroLevelBaseData,
+        levels: await levelsData(100, heroLevelBaseData, heroData),
     };
 
     // console.log("Compound hero data:", hero);

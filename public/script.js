@@ -1,10 +1,12 @@
-// Função para buscar heróis
+/**
+ * Função para buscar a lista de heróis para preencher o select.
+ * @returns {Promise} Promise com os nomes e IDs dos heróis
+ */
 async function fetchHeroes() {
     try {
         const response = await fetch("/api/heroes");
         if (!response.ok) throw new Error("Erro ao buscar a lista de heróis.");
         const heroesData = await response.json();
-        console.log("🚀 ~ fetchHeroes ~ heroesData:", heroesData);
         heroesData.sort((a, b) => (a.heroName > b.heroName ? 1 : -1));
         populateHeroSelect(heroesData);
         return heroesData;
@@ -13,11 +15,20 @@ async function fetchHeroes() {
     }
 }
 
-// Função para buscar os dados do herói
+/**
+ * Função para buscar os dados do herói
+ * @param {heroId} heroId - ID do herói
+ * @returns {Promise} Promise com os dados do herói
+ */
 async function fetchHero(heroId) {
-    const heroData = await fetch(`/api/hero/${heroId}`);
+    const response = await fetch(`/api/hero/${heroId}`);
 
-    console.log("heroData:", heroData);
+    if (!response.ok) {
+        console.error("Erro ao buscar os dados do herói:", response);
+        return null;
+    }
+
+    return response.json();
 }
 
 // Função para preencher o select com os heróis
@@ -39,7 +50,7 @@ async function fetchAndDisplayHero(heroId) {
         const heroIdNum = parseInt(heroId, 10);
 
         // Procura o herói específico usando o heroData já carregado
-        const selectedHero = fetchHero(heroIdNum);
+        const selectedHero = await fetchHero(heroIdNum);
         if (selectedHero) {
             displayHero(selectedHero);
             const level = parseInt($("#hero-level").val(), 10);
@@ -65,35 +76,49 @@ function calculateHeroAttributes(hero, level) {
         resistance: hero["resistance*base"],
     };
 
-    const levelUpData = {
-        30: { defense: 8.51, max_health: 8.51, phy_dmg: 8.51 },
-        50: { defense: 12.97, max_health: 12.97, phy_dmg: 12.97 },
-        70: { defense: 19.74, max_health: 19.74, phy_dmg: 19.74 },
-        90: { defense: 28.45, max_health: 28.45, phy_dmg: 28.45 },
-        100: { defense: 0.0, max_health: 0.0, phy_dmg: 0.0 },
-    };
+    console.log(
+        "hero.levels",
+        hero.levels.find((heroLevel) => heroLevel.level === level),
+    );
+
+    baseAttributes.accuracy = hero.levels.find((heroLevel) => heroLevel.level === level).accuracy;
+    baseAttributes.atk_speed = hero.levels.find((heroLevel) => heroLevel.level === level).atk_speed;
+    baseAttributes.crit_bonus = hero.levels.find((heroLevel) => heroLevel.level === level).crit_bonus;
+    baseAttributes.crit_chance = hero.levels.find((heroLevel) => heroLevel.level === level).crit_chance;
+    baseAttributes.defense = hero.levels.find((heroLevel) => heroLevel.level === level).defense;
+    baseAttributes.max_health = hero.levels.find((heroLevel) => heroLevel.level === level).max_health;
+    baseAttributes.phy_dmg = hero.levels.find((heroLevel) => heroLevel.level === level).physical_damage;
+    baseAttributes.resistance = hero.levels.find((heroLevel) => heroLevel.level === level).resistance;
+
+    // const levelUpData = {
+    //     30: { defense: 8.51, max_health: 8.51, phy_dmg: 8.51 },
+    //     50: { defense: 12.97, max_health: 12.97, phy_dmg: 12.97 },
+    //     70: { defense: 19.74, max_health: 19.74, phy_dmg: 19.74 },
+    //     90: { defense: 28.45, max_health: 28.45, phy_dmg: 28.45 },
+    //     100: { defense: 0.0, max_health: 0.0, phy_dmg: 0.0 },
+    // };
 
     // Aplicar aumentos de atributos conforme o nível
-    if (level >= 30) {
-        baseAttributes.defense += levelUpData[30].defense;
-        baseAttributes.max_health += levelUpData[30].max_health;
-        baseAttributes.phy_dmg += levelUpData[30].phy_dmg;
-    }
-    if (level >= 50) {
-        baseAttributes.defense += levelUpData[50].defense;
-        baseAttributes.max_health += levelUpData[50].max_health;
-        baseAttributes.phy_dmg += levelUpData[50].phy_dmg;
-    }
-    if (level >= 70) {
-        baseAttributes.defense += levelUpData[70].defense;
-        baseAttributes.max_health += levelUpData[70].max_health;
-        baseAttributes.phy_dmg += levelUpData[70].phy_dmg;
-    }
-    if (level >= 90) {
-        baseAttributes.defense += levelUpData[90].defense;
-        baseAttributes.max_health += levelUpData[90].max_health;
-        baseAttributes.phy_dmg += levelUpData[90].phy_dmg;
-    }
+    // if (level >= 30) {
+    //     baseAttributes.defense += levelUpData[30].defense;
+    //     baseAttributes.max_health += levelUpData[30].max_health;
+    //     baseAttributes.phy_dmg += levelUpData[30].phy_dmg;
+    // }
+    // if (level >= 50) {
+    //     baseAttributes.defense += levelUpData[50].defense;
+    //     baseAttributes.max_health += levelUpData[50].max_health;
+    //     baseAttributes.phy_dmg += levelUpData[50].phy_dmg;
+    // }
+    // if (level >= 70) {
+    //     baseAttributes.defense += levelUpData[70].defense;
+    //     baseAttributes.max_health += levelUpData[70].max_health;
+    //     baseAttributes.phy_dmg += levelUpData[70].phy_dmg;
+    // }
+    // if (level >= 90) {
+    //     baseAttributes.defense += levelUpData[90].defense;
+    //     baseAttributes.max_health += levelUpData[90].max_health;
+    //     baseAttributes.phy_dmg += levelUpData[90].phy_dmg;
+    // }
 
     return baseAttributes;
 }
@@ -101,25 +126,27 @@ function calculateHeroAttributes(hero, level) {
 // Função para exibir atributos calculados
 function displayCalculatedAttributes(hero, level) {
     const attributes = calculateHeroAttributes(hero, level);
+    console.log("🚀 ~ displayCalculatedAttributes ~ attributes:", attributes)
 
     const attributesContainer = $("#hero-atributo");
+    attributesContainer.empty(); // Limpa os atributos anteriores
     attributesContainer.html(`
         <h6>Atributos Calculados (Nível ${level}):</h6>
-        <p><strong>Precisão:</strong> ${attributes.accuracy.toFixed(2)}</p>
-        <p><strong>Velocidade de Ataque:</strong> ${attributes.atk_speed.toFixed(2)}</p>
-        <p><strong>Bônus Crítico:</strong> ${attributes.crit_bonus.toFixed(2)}</p>
-        <p><strong>Chance Crítica:</strong> ${attributes.crit_chance.toFixed(2)}</p>
-        <p><strong>Defesa:</strong> ${attributes.defense.toFixed(2)}</p>
-        <p><strong>Saúde Máxima:</strong> ${attributes.max_health.toFixed(2)}</p>
-        <p><strong>Dano Físico:</strong> ${attributes.phy_dmg.toFixed(2)}</p>
-        <p><strong>Resistência:</strong> ${attributes.resistance.toFixed(2)}</p>
+        <p><strong>Precisão:</strong> ${attributes.accuracy ?? 0}</p>
+        <p><strong>Velocidade de Ataque:</strong> ${attributes.atk_speed ?? 0}</p>
+        <p><strong>Bônus Crítico:</strong> ${attributes.crit_bonus ?? 0}</p>
+        <p><strong>Chance Crítica:</strong> ${attributes.crit_chance ?? 0}</p>
+        <p><strong>Defesa:</strong> ${attributes.defense ?? 0}</p>
+        <p><strong>Saúde Máxima:</strong> ${attributes.max_health ?? 0}</p>
+        <p><strong>Dano Físico:</strong> ${attributes.phy_dmg ?? 0}</p>
+        <p><strong>Resistência:</strong> ${attributes.resistance ?? 0}</p>
     `);
 }
 
 // Função para exibir os dados do herói
 function displayHero(hero) {
     const heroContainer = $("#hero-container");
-    const heroImagePath = `${hero.heroIdPath.split("/").pop()}` || null; // Obtém o nome do arquivo, ex: icon_duizhangji.png
+    const heroImagePath = `${hero.heroIdPath.split("/").pop()}` ?? null; // Obtém o nome do arquivo, ex: icon_duizhangji.png
     const {
         heroName,
         ability_replace,
@@ -174,15 +201,7 @@ function displayHero(hero) {
 
                 <h6>Informações Base:</h6>
                 <ul id="hero-atributo">
-                    <li><strong>Precisão:</strong> ${accuracy}</li>
-                    <li><strong>Velocidade de Ataque:</strong> ${atk_speed}</li>
-                    <li><strong>Defesa:</strong> ${defense}</li>
-                    <li><strong>Saúde Máxima:</strong> ${max_health}</li>
-                    <li><strong>Dano Físico:</strong> ${phy_dmg}</li>
-                    <li><strong>Resistência:</strong> ${resistance}</li>
-                    <li><strong>Bonus Crítico:</strong> ${crit_bonus}</li>
-                    <li><strong>Chance Crítica:</strong> ${crit_chance}</li>
-                    <li><strong>Maestria:</strong> ${mastery}</li>
+                    
                 </ul>
 
                 <h6>Habilidades:</h6>
